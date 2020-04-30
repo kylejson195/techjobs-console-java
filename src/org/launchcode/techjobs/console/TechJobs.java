@@ -1,7 +1,9 @@
 package org.launchcode.techjobs.console;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -11,15 +13,15 @@ public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
-        columnChoices.put("core competency", "Skill");
-        columnChoices.put("employer", "Employer");
-        columnChoices.put("location", "Location");
-        columnChoices.put("position type", "Position Type");
-        columnChoices.put("all", "All");
+        columnChoices.put("core competency", "Skill"); //i=0
+        columnChoices.put("employer", "Employer"); //i=1
+        columnChoices.put("location", "Location"); // i=2
+        columnChoices.put("position type", "Position Type"); //i=3
+        columnChoices.put("all", "All"); //i=4
 
         // Top-level menu options
         HashMap<String, String> actionChoices = new HashMap<>();
@@ -62,6 +64,7 @@ public class TechJobs {
 
                 if (searchField.equals("all")) {
                     System.out.println("Search all fields not yet implemented.");
+                    // Add findByValue here?
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -103,14 +106,26 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
+
     }
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        if (someJobs.size() == 0 ) {
+            System.out.println("Please enter valid data");
+        }
+        for (int i = 0; i < someJobs.size(); i++) {
 
-        System.out.println("printJobs is not implemented yet");
+            System.out.println("***");
+
+        for (Map.Entry job : someJobs.get(i).entrySet())
+        {
+            System.out.println( job.getKey() + ": " + job.getValue() );
+            }
+            System.out.println("***\n");
+        }
     }
 }

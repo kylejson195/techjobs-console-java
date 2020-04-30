@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -124,5 +125,15 @@ public class JobData {
             e.printStackTrace();
         }
     }
+
+    public static void findByValue() {
+        for (int i = 0; i < allJobs.size(); i ++ ) {
+            System.out.println("This Works");
+            for (Map.Entry job : allJobs.get(i).entrySet()) {
+                
+            }
+        }
+    }
+
 
 }
