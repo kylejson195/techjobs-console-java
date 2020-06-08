@@ -70,7 +70,7 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-
+        //creates a new ArrayList to store jobs
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
@@ -84,6 +84,25 @@ public class JobData {
 
         return jobs;
     }
+
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+// First, we need to establish what our search term is. Then set a function to iterate through the allJobs Array
+// When it finds a match for the search term, then have it print the listing, and repeat until the end of the Hash
+        //
+        loadData();
+        ArrayList<HashMap<String, String>> foundValues = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            String letsSimplify = row.toString().toLowerCase();
+            if (letsSimplify.contains(value.toLowerCase())){
+                foundValues.add(row);
+            }
+        }
+        return foundValues;
+
+
+    }
+
 
     /**
      * Read in data from a CSV file and store it in a list
@@ -126,14 +145,7 @@ public class JobData {
         }
     }
 
-    public static void findByValue() {
-        for (int i = 0; i < allJobs.size(); i ++ ) {
-            System.out.println("This Works");
-            for (Map.Entry job : allJobs.get(i).entrySet()) {
-                
-            }
-        }
-    }
+
 
 
 }
